@@ -31,7 +31,7 @@ def cric_userView(request):
                 return Response(seializeData.data,status=status.HTTP_202_ACCEPTED)
         elif request.method =='DELETE':
             data = request.data
-            getDataById=cric_profile.objects.get(pk=data['id])
+            getDataById=cric_profile.objects.get(pk=data['id'])
             getDataById.delete()
             return Response({"msg":"data has been deleted" +str(data['id'])},status=status.HTTP_204_NO_CONTENT)
 
