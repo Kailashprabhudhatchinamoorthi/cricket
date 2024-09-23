@@ -24,16 +24,16 @@ def cric_userView(request):
         elif request.method == 'PUT':
 
             data = request.data
-            getDataById=cric_profile.objects.get(pk=data['id_new'])
-            seializeData=cric_profile_serializer(getDataById,data=data,status=status.HTTP_202_ACCEPTED)
+            getDataById=cric_profile.objects.get(pk=data['id'])
+            seializeData=cric_profile_serializer(getDataById,data=data)
             if seializeData.is_valid():
                 seializeData.save()
-                return Response(seializeData.data)
+                return Response(seializeData.data,status=status.HTTP_202_ACCEPTED)
         elif request.method =='DELETE':
             data = request.data
-            getDataById=cric_profile.objects.get(pk=data['id_new'])
+            getDataById=cric_profile.objects.get(pk=data['id])
             getDataById.delete()
-            return Response({"msg":"data has been deleted" +str(data['id_new'])},status=status.HTTP_204_NO_CONTENT)
+            return Response({"msg":"data has been deleted" +str(data['id'])},status=status.HTTP_204_NO_CONTENT)
 
 
 # Create your views here.
