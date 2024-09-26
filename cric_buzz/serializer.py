@@ -17,7 +17,7 @@ class cric_board_serializer(serializers.Serializer):
     board_orgin=serializers.CharField(max_length=100)
 
     class meta:
-        fields=['id','board_name',board_orgin]
+        fields=['id','board_name','board_orgin']
 
     pass    
 
