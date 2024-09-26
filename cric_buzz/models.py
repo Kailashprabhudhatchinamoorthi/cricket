@@ -18,6 +18,9 @@ class cric_board(models.Model):
     board_name=models.CharField(max_length=100)
     board_orgin=models.CharField(max_length=100)
 
+    def __str__(self) -> str:
+        return (str(self.id)+" "+self.board_name)
+
 """cricket team info"""
     
 class cric_teamInfo(models.Model):
@@ -37,7 +40,6 @@ class cric_series(models.Model):
     series_name=models.CharField(max_length=200)
     series_host=models.ForeignKey(cric_board,related_name="host_team",on_delete=models.CASCADE)
     participate_team=models.ManyToManyField(cric_teamInfo,related_name="host_team")
-    
 
     def __str__(self) -> str:
         return (str(self.id)+" "+self.series_name)
